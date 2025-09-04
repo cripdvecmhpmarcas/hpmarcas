@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview - Templates de Email HP Marcas</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 24px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 32px;
+            background: linear-gradient(135deg, #f0b100 0%, #d4af37 100%);
+            border-radius: 12px;
+            color: #1a1a1a;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+        }
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .preview-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+        }
+        .preview-header {
+            background: #f8f9fa;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .preview-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .preview-header span {
+            font-size: 14px;
+            color: #666;
+            font-weight: normal;
+        }
+        .preview-content {
+            padding: 20px;
+        }
+        .preview-email {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .email-header-sim {
+            background: linear-gradient(135deg, #f0b100 0%, #d4af37 100%);
+            padding: 12px 16px;
+            text-align: center;
+            border-radius: 6px 6px 0 0;
+            margin: -16px -16px 12px -16px;
+        }
+        .email-logo {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+        .email-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 12px 0 8px 0;
+            text-align: center;
+        }
+        .email-subtitle {
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .cta-button-sim {
+            display: inline-block;
+            background: linear-gradient(135deg, #f0b100 0%, #d4af37 100%);
+            color: #1a1a1a;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 12px auto;
+            text-align: center;
+            font-size: 14px;
+        }
+        .cta-container {
+            text-align: center;
+            margin: 16px 0;
+        }
+        .token-display {
+            background: linear-gradient(135deg, #fff9e6 0%, #fef3cd 100%);
+            border: 2px solid #f0b100;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            margin: 12px 0;
+        }
+        .token-code {
+            font-size: 20px;
+            font-weight: 800;
+            color: #b7950b;
+            letter-spacing: 4px;
+            font-family: monospace;
+        }
+        .features {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e5e5e5;
+        }
+        .features h2 {
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .feature-item {
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #f0b100;
+        }
+        .feature-item h4 {
+            margin: 0 0 8px 0;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+        .feature-item p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        .implementation {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 48px;
+        }
+        .implementation h2 {
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+        .implementation p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .implementation code {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .file-list {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+        .file-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .file-list li {
+            margin: 8px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>📧 Templates de Email HP Marcas</h1>
+            <p>Design premium, responsivo e compatível com todos os clientes de email</p>
+        </div>
+
+        <!-- Grid de Templates -->
+        <div class="grid">
+
+            <!-- Template 1: Confirm Signup -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3>Confirmação de Cadastro <span>(confirm-signup.html)</span></h3>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-email">
+                        <div class="email-header-sim">
+                            <div class="email-logo">HP Marcas</div>
+                        </div>
+                        <div class="email-title">🎉 Bem-vindo ao HP Marcas!</div>
+                        <div class="email-subtitle">Confirme seu email para ativar sua conta</div>
+                        <p>Obrigado por se cadastrar no <strong>HP Marcas</strong>. Para começar a aproveitar todos os nossos produtos...</p>
+                        <div class="cta-container">
+                            <a href="#" class="cta-button-sim">✓ Confirmar Email</a>
+                        </div>
+                        <p style="font-size: 12px; color: #666; text-align: center;">
+                            Importante: Se você não criou uma conta, pode ignorar este email.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 2: Invite -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3>Convite de Usuário <span>(invite.html)</span></h3>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-email">
+                        <div class="email-header-sim">
+                            <div class="email-logo">HP Marcas</div>
+                        </div>
+                        <div class="email-title">🎊 Você foi convidado!</div>
+                        <div class="email-subtitle">Junte-se à família HP Marcas</div>
+                        <p>Você recebeu um convite especial para criar uma conta no <strong>HP Marcas</strong>...</p>
+                        <div class="cta-container">
+                            <a href="#" class="cta-button-sim">🚀 Aceitar Convite</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 3: Magic Link -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3>Magic Link <span>(magic-link.html)</span></h3>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-email">
+                        <div class="email-header-sim">
+                            <div class="email-logo">HP Marcas</div>
+                        </div>
+                        <div class="email-title">⚡ Acesso Rápido</div>
+                        <div class="email-subtitle">Entre na sua conta com um clique</div>
+                        <p>Use o link mágico para fazer login de forma rápida e segura...</p>
+                        <div class="cta-container">
+                            <a href="#" class="cta-button-sim">🔐 Fazer Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 4: Change Email -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3>Mudança de Email <span>(change-email.html)</span></h3>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-email">
+                        <div class="email-header-sim">
+                            <div class="email-logo">HP Marcas</div>
+                        </div>
+                        <div class="email-title">📧 Confirmar mudança de email</div>
+                        <div class="email-subtitle">Confirme seu novo endereço de email</div>
+                        <p><strong>Email atual:</strong> <span style="color: #dc3545;">antigo@email.com</span></p>
+                        <p><strong>Novo email:</strong> <span style="color: #28a745; font-weight: 600;">novo@email.com</span></p>
+                        <div class="cta-container">
+                            <a href="#" class="cta-button-sim">✓ Confirmar mudança</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 5: Reset Password -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3>Reset de Senha <span>(reset-password.html)</span></h3>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-email">
+                        <div class="email-header-sim">
+                            <div class="email-logo">HP Marcas</div>
+                        </div>
+                        <div class="email-title">🔐 Redefinir senha</div>
+                        <div class="email-subtitle">Crie uma nova senha para sua conta</div>
+                        <p>Você solicitou a redefinição da senha da sua conta...</p>
+                        <div class="cta-container">
+                            <a href="#" class="cta-button-sim">🔑 Redefinir senha</a>
+                        </div>
+                        <p style="background: #fff3cd; padding: 8px; border-radius: 4px; font-size: 12px;">
+                            ⚠️ Este link expira em 1 hora por motivos de segurança.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 6: Reauthentication -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3>Código de Verificação <span>(confirm-reauthentication.html)</span></h3>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-email">
+                        <div class="email-header-sim">
+                            <div class="email-logo">HP Marcas</div>
+                        </div>
+                        <div class="email-title">🔒 Código de verificação</div>
+                        <div class="email-subtitle">Confirme sua identidade para continuar</div>
+                        <p>Para sua segurança, precisamos verificar sua identidade...</p>
+                        <div class="token-display">
+                            <p style="margin: 0; font-size: 12px; color: #856404; font-weight: 600;">SEU CÓDIGO DE VERIFICAÇÃO</p>
+                            <div class="token-code">ABC123</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <h2>🚀 Recursos Premium</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>🎨 Design HP Marcas</h4>
+                    <p>Identidade visual consistente com gradientes dourados e tipografia premium</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📱 Responsivo</h4>
+                    <p>Funciona perfeitamente em desktop, tablet e mobile com design mobile-first</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🔧 Compatibilidade</h4>
+                    <p>Testado e otimizado para Gmail, Outlook, Apple Mail e outros clientes</p>
+                </div>
+                <div class="feature-item">
+                    <h4>♿ Acessibilidade</h4>
+                    <p>WCAG 2.1 AA compliant com ARIA labels e navegação por teclado</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🔒 Segurança</h4>
+                    <p>Avisos de segurança integrados e boas práticas anti-phishing</p>
+                </div>
+                <div class="feature-item">
+                    <h4>⚡ Performance</h4>
+                    <p>CSS inline otimizado, tamanho reduzido e carregamento rápido</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation -->
+        <div class="implementation">
+            <h2>🔧 Implementação</h2>
+            <p>
+                Todos os templates estão prontos para uso no Supabase.
+                Simplesmente copie o código HTML de cada arquivo e cole no dashboard do Supabase
+                em <code>Authentication → Email Templates</code>.
+            </p>
+
+            <div class="file-list">
+                <h4 style="margin-top: 0;">📁 Arquivos Criados:</h4>
+                <ul>
+                    <li>📄 confirm-signup.html - Template de confirmação de cadastro</li>
+                    <li>📄 invite.html - Template de convite de usuário</li>
+                    <li>📄 magic-link.html - Template de magic link</li>
+                    <li>📄 change-email.html - Template de mudança de email</li>
+                    <li>📄 reset-password.html - Template de reset de senha</li>
+                    <li>📄 confirm-reauthentication.html - Template de código de verificação</li>
+                    <li>📖 README.md - Documentação completa</li>
+                    <li>🚀 IMPLEMENTACAO.md - Guia de implementação</li>
+                    <li>👁️ preview.html - Este arquivo de preview</li>
+                </ul>
+            </div>
+
+            <p>
+                <strong>Próximo passo:</strong> Configure os templates no Supabase seguindo o guia em
+                <code>IMPLEMENTACAO.md</code> para ter emails profissionais funcionando em minutos!
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

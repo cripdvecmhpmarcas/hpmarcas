@@ -1,0 +1,312 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* HP Marcas Gold Colors */
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
+  --color-gold-950: var(--gold-950);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* HP Marcas Base Colors */
+  --yellow1: #d4af37; /* Dourado clássico */
+  --yellow2: #f0b100; /* Dourado vibrante - cor principal */
+  --yellow3: #b7950b; /* Dourado escuro */
+
+  /* Light theme - HP Marcas com #f0b100 como protagonista */
+  --background: oklch(1 0 0); /* Branco puro */
+  --foreground: oklch(0.145 0 0); /* Preto profundo */
+  --card: oklch(1 0 0); /* Branco para cards */
+  --card-foreground: oklch(0.145 0 0); /* Texto preto em cards */
+  --popover: oklch(1 0 0); /* Branco para popovers */
+  --popover-foreground: oklch(0.145 0 0); /* Texto preto em popovers */
+
+  /* Primary baseado no #f0b100 */
+  --primary: oklch(0.765 0.142 89.52); /* #f0b100 - Dourado vibrante */
+  --primary-foreground: oklch(0.145 0 0); /* Texto preto no dourado */
+
+  --secondary: oklch(0.97 0 0); /* Cinza muito claro */
+  --secondary-foreground: oklch(0.205 0 0); /* Texto escuro */
+  --muted: oklch(0.97 0 0); /* Cinza claro */
+  --muted-foreground: oklch(0.556 0 0); /* Texto cinza médio */
+  --accent: oklch(0.97 0 0); /* Cinza claro para accent */
+  --accent-foreground: oklch(0.205 0 0); /* Texto escuro */
+
+  --destructive: oklch(0.577 0.245 27.325); /* Vermelho para erros */
+  --border: oklch(0.922 0 0); /* Cinza claro para bordas */
+  --input: oklch(0.97 0 0); /* Fundo de inputs */
+  --ring: oklch(0.765 0.142 89.52); /* Dourado #f0b100 para focus ring */
+
+  /* Chart colors - tons dourados baseados em #f0b100 */
+  --chart-1: oklch(0.765 0.142 89.52); /* #f0b100 - Dourado principal */
+  --chart-2: oklch(0.708 0.118 85.87); /* #d4af37 - Dourado clássico */
+  --chart-3: oklch(0.62 0.11 85.87); /* #b7950b - Dourado escuro */
+  --chart-4: oklch(0.556 0 0); /* Cinza médio */
+  --chart-5: oklch(0.922 0 0); /* Cinza claro */
+
+  /* Sidebar - tons dourados */
+  --sidebar: oklch(0.985 0 0); /* Fundo claro */
+  --sidebar-foreground: oklch(0.145 0 0); /* Texto escuro */
+  --sidebar-primary: oklch(0.765 0.142 89.52); /* #f0b100 para item ativo */
+  --sidebar-primary-foreground: oklch(0.145 0 0); /* Texto preto no dourado */
+  --sidebar-accent: oklch(0.97 0 0); /* Hover cinza claro */
+  --sidebar-accent-foreground: oklch(0.205 0 0); /* Texto no hover */
+  --sidebar-border: oklch(0.922 0 0); /* Borda cinza */
+  --sidebar-ring: oklch(0.765 0.142 89.52); /* Focus dourado */
+
+  /* HP Marcas Gold Scale baseada em #f0b100 */
+  --gold-50: oklch(0.989 0.01 89.52); /* #fffdf7 */
+  --gold-100: oklch(0.972 0.025 89.52); /* #fff9e6 */
+  --gold-200: oklch(0.944 0.05 89.52); /* #fef2cc */
+  --gold-300: oklch(0.89 0.095 89.52); /* #fde68a */
+  --gold-400: oklch(0.765 0.142 89.52); /* #f0b100 - COR PRINCIPAL */
+  --gold-500: oklch(0.708 0.118 85.87); /* #d4af37 */
+  --gold-600: oklch(0.62 0.11 85.87); /* #b7950b */
+  --gold-700: oklch(0.535 0.095 85.87); /* #a16207 */
+  --gold-800: oklch(0.45 0.08 85.87); /* #854d0e */
+  --gold-900: oklch(0.37 0.065 85.87); /* #713f12 */
+  --gold-950: oklch(0.22 0.04 85.87); /* #422006 */
+}
+
+.dark {
+  /* Dark theme - HP Marcas com #f0b100 como destaque */
+  --background: oklch(0.145 0 0); /* Preto profundo */
+  --foreground: oklch(0.985 0 0); /* Branco quase puro */
+  --card: oklch(0.205 0 0); /* Cinza escuro para cards */
+  --card-foreground: oklch(0.985 0 0); /* Texto claro em cards */
+  --popover: oklch(0.205 0 0); /* Cinza escuro para popovers */
+  --popover-foreground: oklch(0.985 0 0); /* Texto claro em popovers */
+
+  /* Primary mais vibrante no dark mode */
+  --primary: oklch(0.78 0.15 89.52); /* #f0b100 mais brilhante no escuro */
+  --primary-foreground: oklch(0.145 0 0); /* Texto preto no dourado */
+
+  --secondary: oklch(0.269 0 0); /* Cinza escuro */
+  --secondary-foreground: oklch(0.985 0 0); /* Texto claro */
+  --muted: oklch(0.269 0 0); /* Cinza escuro */
+  --muted-foreground: oklch(0.708 0 0); /* Texto cinza claro */
+  --accent: oklch(0.269 0 0); /* Cinza escuro para accent */
+  --accent-foreground: oklch(0.985 0 0); /* Texto claro */
+
+  --destructive: oklch(0.704 0.191 22.216); /* Vermelho mais claro */
+  --border: oklch(1 0 0 / 10%); /* Borda transparente */
+  --input: oklch(1 0 0 / 15%); /* Input com transparência */
+  --ring: oklch(0.78 0.15 89.52); /* #f0b100 mais vibrante para focus */
+
+  /* Chart colors dark - mantendo #f0b100 como principal */
+  --chart-1: oklch(0.78 0.15 89.52); /* #f0b100 mais vibrante */
+  --chart-2: oklch(0.708 0.118 85.87); /* #d4af37 */
+  --chart-3: oklch(0.985 0 0); /* Branco */
+  --chart-4: oklch(0.708 0 0); /* Cinza claro */
+  --chart-5: oklch(0.556 0 0); /* Cinza médio */
+
+  /* Sidebar dark */
+  --sidebar: oklch(0.205 0 0); /* Fundo escuro */
+  --sidebar-foreground: oklch(0.985 0 0); /* Texto claro */
+  --sidebar-primary: oklch(
+    0.78 0.15 89.52
+  ); /* #f0b100 mais vibrante para ativo */
+  --sidebar-primary-foreground: oklch(0.145 0 0); /* Texto preto no dourado */
+  --sidebar-accent: oklch(0.269 0 0); /* Hover cinza escuro */
+  --sidebar-accent-foreground: oklch(0.985 0 0); /* Texto claro no hover */
+  --sidebar-border: oklch(1 0 0 / 10%); /* Borda transparente */
+  --sidebar-ring: oklch(0.78 0.15 89.52); /* Focus dourado vibrante */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom classes HP Marcas */
+@layer components {
+  .hp-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--gold-400),
+      var(--gold-500),
+      var(--gold-600)
+    );
+  }
+
+  .hp-text-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--gold-400),
+      var(--gold-500),
+      var(--gold-600)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .hp-shadow-gold {
+    box-shadow: 0 4px 14px 0 oklch(0.765 0.142 89.52 / 0.25);
+  }
+
+  .hp-border-gold {
+    border-color: var(--gold-300);
+  }
+
+  .hp-bg-gold-soft {
+    background-color: var(--gold-50);
+    border-color: var(--gold-200);
+  }
+
+  .hp-button-primary {
+    background-color: var(--gold-400);
+    color: var(--foreground);
+    border: 1px solid var(--gold-500);
+  }
+
+  .hp-button-primary:hover {
+    background-color: var(--gold-500);
+  }
+
+  .hp-button-secondary {
+    background-color: transparent;
+    color: var(--gold-600);
+    border: 1px solid var(--gold-400);
+  }
+
+  .hp-button-secondary:hover {
+    background-color: var(--gold-50);
+  }
+}
+
+/* Custom scrollbar with HP Marcas colors */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.97 0 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-500);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: oklch(0.269 0 0);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--gold-400);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-500);
+}
+
+/* Loading animation with gold */
+@keyframes hp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    background-color: var(--gold-400);
+  }
+  50% {
+    opacity: 0.5;
+    background-color: var(--gold-600);
+  }
+}
+
+.hp-pulse {
+  animation: hp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Focus states with gold */
+.hp-focus-ring:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 2px;
+}
+
+/* Status indicators */
+.status-active {
+  color: var(--gold-600);
+  background-color: var(--gold-100);
+}
+
+.status-success {
+  color: oklch(0.45 0.15 145);
+  background-color: oklch(0.95 0.03 145);
+}
+
+.status-warning {
+  color: var(--gold-700);
+  background-color: var(--gold-100);
+}
+
+.status-error {
+  color: oklch(0.55 0.2 25);
+  background-color: oklch(0.95 0.05 25);
+}
+
+a, button {
+  cursor: pointer;
+}

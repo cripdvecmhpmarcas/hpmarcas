@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+
+  <title>Pagamento Confirmado - HP Marcas</title>
+
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+    }
+
+    /* HP Marcas Color Variables */
+    :root {
+      --hp-gold-primary: #f0b100;
+      --hp-gold-hover: #d4af37;
+      --hp-gold-dark: #b7950b;
+      --hp-gold-light: #fff9e6;
+      --hp-text-primary: #1a1a1a;
+      --hp-text-secondary: #6b7280;
+      --hp-border: #e5e7eb;
+      --hp-success: #10b981;
+      --hp-white: #ffffff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--hp-text-primary);
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: var(--hp-white);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--hp-success), #059669);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--hp-white);
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .success-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .content {
+      padding: 30px 20px;
+    }
+
+    .payment-info {
+      background: linear-gradient(135deg, #dcfdf7, #a7f3d0);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-left: 4px solid var(--hp-success);
+      text-align: center;
+    }
+
+    .payment-status {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--hp-success);
+      margin-bottom: 10px;
+    }
+
+    .order-info {
+      background-color: var(--hp-gold-light);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-left: 4px solid var(--hp-gold-primary);
+    }
+
+    .order-number {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--hp-gold-dark);
+      margin-bottom: 10px;
+    }
+
+    .order-details {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .detail-item {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .detail-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--hp-text-secondary);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .detail-value {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var(--hp-text-primary);
+      border-bottom: 2px solid var(--hp-gold-primary);
+      padding-bottom: 8px;
+    }
+
+    .totals {
+      background-color: #f9fafb;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .total-row.final {
+      border-top: 2px solid var(--hp-success);
+      padding-top: 12px;
+      margin-top: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--hp-success);
+    }
+
+    .tracking-info {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-left: 4px solid #3b82f6;
+    }
+
+    .tracking-number {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    .next-steps {
+      background-color: var(--hp-gold-light);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .next-steps ul {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+
+    .next-steps li {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--hp-gold-primary), var(--hp-gold-hover));
+      color: var(--hp-white) !important;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      margin: 10px 15px;
+      transition: all 0.3s ease;
+    }
+
+    .cta-secondary {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      background-color: #1f2937;
+      color: var(--hp-white);
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .footer-links {
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: var(--hp-gold-primary);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .social-links {
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--hp-gold-primary);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .content,
+      .header,
+      .footer {
+        padding: 20px 15px;
+      }
+
+      .order-details {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .cta-button {
+        margin: 10px 0;
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="success-icon">✅</div>
+      <h1>Pagamento Confirmado!</h1>
+      <p>Seu pedido já está sendo preparado</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Payment Confirmation -->
+      <div class="payment-info">
+        <div class="payment-status">
+          💳 Pagamento Processado com Sucesso
+        </div>
+        <p>Confirmamos o recebimento do seu pagamento</p>
+        {{#if PAYMENT_METHOD}}
+        <p style="font-size: 14px; margin-top: 10px;">
+          <strong>Método:</strong> {{PAYMENT_METHOD}}<br>
+          {{#if PAYMENT_ID}}<strong>ID da Transação:</strong> {{PAYMENT_ID}}{{/if}}
+        </p>
+        {{/if}}
+      </div>
+
+      <!-- Order Information -->
+      <div class="order-info">
+        <div class="order-number">
+          Pedido #{{ORDER_NUMBER}}
+        </div>
+        <div class="order-details">
+          <div class="detail-item">
+            <div class="detail-label">Data do Pagamento</div>
+            <div class="detail-value">{{PAYMENT_DATE}}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Status do Pedido</div>
+            <div class="detail-value" style="color: var(--hp-success); font-weight: bold;">{{ORDER_STATUS}}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Previsão de Entrega</div>
+            <div class="detail-value">{{ESTIMATED_DELIVERY}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Info -->
+      <div class="section-title">Olá, {{CUSTOMER_NAME}}!</div>
+      <p>Ótimas notícias! Seu pagamento foi processado com sucesso e seu pedido já está em preparação.</p>
+
+      <!-- Payment Summary -->
+      <div class="totals">
+        <div class="total-row">
+          <span>Subtotal:</span>
+          <span>{{SUBTOTAL}}</span>
+        </div>
+        {{#if SHIPPING_COST}}
+        <div class="total-row">
+          <span>Frete:</span>
+          <span>{{SHIPPING_COST}}</span>
+        </div>
+        {{/if}}
+        {{#if DISCOUNT}}
+        <div class="total-row" style="color: var(--hp-success);">
+          <span>Desconto:</span>
+          <span>-{{DISCOUNT}}</span>
+        </div>
+        {{/if}}
+        <div class="total-row final">
+          <span>Total Pago:</span>
+          <span>{{TOTAL_AMOUNT}}</span>
+        </div>
+      </div>
+
+      <!-- Tracking Information -->
+      {{#if TRACKING_NUMBER}}
+      <div class="tracking-info">
+        <div class="section-title" style="margin-bottom: 15px; border: none; padding: 0; color: #1e40af;">📦 Informações
+          de Rastreamento</div>
+        <div class="tracking-number">
+          Código de Rastreamento: {{TRACKING_NUMBER}}
+        </div>
+        <p style="font-size: 14px;">
+          Você pode acompanhar a entrega do seu pedido através do código acima.
+        </p>
+      </div>
+      {{/if}}
+
+      <!-- Next Steps -->
+      <div class="next-steps">
+        <div class="section-title" style="margin-bottom: 15px; border: none; padding: 0;">📋 Próximos Passos</div>
+        <ul>
+          <li><strong>Preparação:</strong> Seu pedido está sendo separado e embalado</li>
+          <li><strong>Envio:</strong> Você receberá o código de rastreamento em breve</li>
+          <li><strong>Entrega:</strong> Acompanhe o status na sua conta ou pelo código de rastreamento</li>
+          <li><strong>Recebimento:</strong> Confira todos os itens ao receber</li>
+        </ul>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div style="text-align: center;">
+        <a href="{{TRACK_ORDER_URL}}" class="cta-button">
+          📦 Acompanhar Pedido
+        </a>
+        {{#if TRACKING_URL}}
+        <a href="{{TRACKING_URL}}" class="cta-button cta-secondary">
+          🚚 Rastrear Entrega
+        </a>
+        {{/if}}
+      </div>
+
+      <!-- Receipt Info -->
+      <div style="background-color: #f9fafb; border-radius: 8px; padding: 20px; margin-top: 30px;">
+        <h3 style="margin-bottom: 10px; color: var(--hp-text-primary);">📄 Nota Fiscal</h3>
+        <p style="font-size: 14px; margin-bottom: 10px;">
+          A nota fiscal eletrônica será enviada por email assim que o pedido for despachado.
+        </p>
+        {{#if INVOICE_KEY}}
+        <p style="font-size: 12px; color: var(--hp-text-secondary);">
+          <strong>Chave da NFe:</strong> {{INVOICE_KEY}}
+        </p>
+        {{/if}}
+      </div>
+
+      <!-- Support -->
+      <div style="background-color: #f9fafb; border-radius: 8px; padding: 20px; margin-top: 30px; text-align: center;">
+        <h3 style="margin-bottom: 10px; color: var(--hp-text-primary);">Precisa de Ajuda?</h3>
+        <p style="margin-bottom: 15px;">Nossa equipe está pronta para atendê-lo</p>
+        <p style="font-size: 14px;">
+          📧 Email: <a href="mailto:{{SUPPORT_EMAIL}}" style="color: var(--hp-gold-primary);">{{SUPPORT_EMAIL}}</a><br>
+          📱 WhatsApp: <a href="{{WHATSAPP_URL}}" style="color: var(--hp-gold-primary);">{{WHATSAPP_NUMBER}}</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-links">
+        <a href="{{WEBSITE_URL}}">Site</a>
+        <a href="{{ACCOUNT_URL}}">Minha Conta</a>
+        <a href="{{SUPPORT_URL}}">Suporte</a>
+        <a href="{{PRIVACY_URL}}">Privacidade</a>
+      </div>
+
+      <p><strong>HP Marcas Perfumes</strong></p>
+      <p>{{COMPANY_ADDRESS}}</p>
+      <p>CNPJ: {{COMPANY_CNPJ}}</p>
+
+      <div class="social-links">
+        <a href="{{INSTAGRAM_URL}}">📷 Instagram</a>
+        <a href="{{FACEBOOK_URL}}">📘 Facebook</a>
+        <a href="{{WHATSAPP_URL}}">📱 WhatsApp</a>
+      </div>
+
+      <p style="margin-top: 20px; font-size: 11px;">
+        Este é um email automático, não responda a este endereço.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
